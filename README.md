@@ -37,3 +37,33 @@ Easy to customize for different datasets or industries
 ## Data Requirements
 
 CSV file with employee features such as age, job role, tenure, salary, satisfaction, etc..
+
+## Use cases
+
+- HR Analytics: Identify departments or roles with high attrition rates
+
+- Decision Support: Help HR plan salary revisions, promotions, or training programs
+
+- Attrition Prediction: Detect employees at risk of leaving early
+
+- Workforce Planning: Forecast hiring needs based on attrition trends
+
+- Custom Analysis: Adaptable to different industries and employee datasets
+
+## Tech Stack
+
+**Language**: Python
+
+**IDE**: PyCharm (or any Python IDE)
+
+**Libraries:**
+
+pandas – Data handling & analysis
+
+numpy – Numerical operations
+
+matplotlib – Data visualization
+
+seaborn – Statistical plots & heatmaps
+
+scikit-learn – Machine learning (for attrition prediction)
