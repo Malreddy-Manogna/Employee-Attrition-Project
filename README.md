@@ -11,6 +11,10 @@ The `Employee Attrition Project` analyzes employee-related data to uncover trend
 
 - [Data Requirements](#data-requirements)
 
+- [Use Cases](#use-cases)
+
+- [Tech Stack](#tech-stack)
+
 
 ## Team Members
 |     Roll No     |    Name           |
