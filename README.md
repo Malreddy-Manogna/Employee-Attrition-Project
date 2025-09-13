@@ -16,7 +16,7 @@ The `Employee Attrition Project` analyzes employee-related data to uncover trend
 - [Tech Stack](#tech-stack)
 
 
-## Team Members
+## 👩🏻‍🎓Team Members
 |     Roll No     |    Name           |
 |-----------------|-------------------|
 |   2410030229    |Likitha Thumma     |
