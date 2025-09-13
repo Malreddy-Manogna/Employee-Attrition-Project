@@ -5,11 +5,11 @@ The `Employee Attrition Project` analyzes employee-related data to uncover trend
 
 
 ## Contents
-.[Team Members](#team-members)
+- [Team Members](#team-members)
 
-.[Features](#features)
+- [Features](#features)
 
-.[Data Requirements](#data-requirements)
+- [Data Requirements](#data-requirements)
 
 
 ## Team Members
