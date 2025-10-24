@@ -11,7 +11,7 @@ st.title("Employee Attrition Analysis and Data Cleaning")
 st.subheader("Data Analytics & Visualization Project")
 
 # --- Load dataset ---
-df = pd.read_csv("C:/II year 2025-26/DAV/Employee Attrition Analyser/HR-Employee-Attrition.csv")
+df = pd.read_csv("HR-Employee-Attrition.csv")
 
 # --- Dataset Overview ---
 st.header("Dataset Summary and Information")
@@ -163,3 +163,4 @@ cleaned_path = "Cleaned_Employee_Attrition.csv"
 df_shuffled.to_csv(cleaned_path, index=False)
 st.success(f"✅ Final cleaned dataset saved as: `{cleaned_path}`")
 st.info("Data cleaning, preprocessing, transformation, visualization, and analysis completed successfully.")
+
