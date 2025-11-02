@@ -19,6 +19,30 @@ if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     st.success("✅ Dataset uploaded successfully!")
 
+    # --- Standardize Gender Column ---
+    if 'Gender' in df.columns:
+        df['Gender'] = df['Gender'].astype(str).str.strip().str.lower().map({
+            'male': 'Male',
+            'm': 'Male',
+            'female': 'Female',
+            'f': 'Female'
+        }).fillna(df['Gender'])
+
+    # --- Standardize Attrition Column ---
+    if 'Attrition' in df.columns:
+        df['Attrition'] = df['Attrition'].astype(str).str.strip().str.lower().map({
+            'yes': 'Yes',
+            'y': 'Yes',
+            '1': 'Yes',
+            'no': 'No',
+            'n': 'No',
+            '0': 'No'
+        }).fillna(df['Attrition'])
+
+    # --- Standardize Department Column ---
+    if 'Department' in df.columns:
+        df['Department'] = df['Department'].astype(str).str.strip().str.title()
+
     # --- Dataset Overview ---
     st.header("Dataset Summary and Information")
     st.write(f"**Shape of Dataset:** {df.shape[0]} rows and {df.shape[1]} columns")
@@ -101,40 +125,45 @@ if uploaded_file is not None:
             st.subheader("Department-wise Attrition Count")
             dept_attrition = df.groupby(['Department', 'Attrition']).size()
             st.write(dept_attrition.unstack(fill_value=0))
-            most_attr_dept = dept_attrition.unstack(fill_value=0)['Yes'].idxmax()
-            st.info(f"📝 The department with the highest attrition is **{most_attr_dept}**.")
+            if 'Yes' in dept_attrition.unstack(fill_value=0).columns:
+                most_attr_dept = dept_attrition.unstack(fill_value=0)['Yes'].idxmax()
+                st.info(f"📝 The department with the highest attrition is **{most_attr_dept}**.")
 
         # Gender-wise attrition
         if 'Gender' in df.columns:
             st.subheader("Gender-wise Attrition Count")
             gender_attr = df.groupby(['Gender', 'Attrition']).size().unstack(fill_value=0)
             st.write(gender_attr)
-            high_gender = gender_attr['Yes'].idxmax()
-            st.info(f"📝 Higher attrition is observed among **{high_gender}** employees.")
+            if 'Yes' in gender_attr.columns:
+                high_gender = gender_attr['Yes'].idxmax()
+                st.info(f"📝 Higher attrition is observed among **{high_gender}** employees.")
 
         # Marital Status-wise attrition
         if 'MaritalStatus' in df.columns:
             st.subheader("Marital Status-wise Attrition Count")
             marital_attr = df.groupby(['MaritalStatus', 'Attrition']).size().unstack(fill_value=0)
             st.write(marital_attr)
-            high_marital = marital_attr['Yes'].idxmax()
-            st.info(f"📝 Employees who are **{high_marital}** show higher attrition rates.")
+            if 'Yes' in marital_attr.columns:
+                high_marital = marital_attr['Yes'].idxmax()
+                st.info(f"📝 Employees who are **{high_marital}** show higher attrition rates.")
 
         # Business Travel-wise attrition
         if 'BusinessTravel' in df.columns:
             st.subheader("Attrition based on Business Travel")
             travel_attr = df.groupby(['BusinessTravel', 'Attrition']).size().unstack(fill_value=0)
             st.write(travel_attr)
-            high_travel = travel_attr['Yes'].idxmax()
-            st.info(f"📝 Employees with **{high_travel}** frequency of travel tend to leave more.")
+            if 'Yes' in travel_attr.columns:
+                high_travel = travel_attr['Yes'].idxmax()
+                st.info(f"📝 Employees with **{high_travel}** frequency of travel tend to leave more.")
 
         # Work-life balance and attrition
         if 'WorkLifeBalance' in df.columns:
             st.subheader("Attrition based on Work-Life Balance")
             worklife_attr = df.groupby(['WorkLifeBalance', 'Attrition']).size().unstack(fill_value=0)
             st.write(worklife_attr)
-            high_worklife = worklife_attr['Yes'].idxmax()
-            st.info(f"📝 Employees with **WorkLifeBalance = {high_worklife}** have the highest attrition.")
+            if 'Yes' in worklife_attr.columns:
+                high_worklife = worklife_attr['Yes'].idxmax()
+                st.info(f"📝 Employees with **WorkLifeBalance = {high_worklife}** have the highest attrition.")
 
         # --- Visualizations ---
         st.header("Visualizations")
